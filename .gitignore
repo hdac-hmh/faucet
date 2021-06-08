@@ -3,3 +3,4 @@ vendor
 .DS_Store
 backend/faucet
 backend/.env.local
+package-lock.json
