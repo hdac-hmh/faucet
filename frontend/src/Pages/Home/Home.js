@@ -23,7 +23,6 @@ const bech32Validate = (param) => {
 
 const sendSchema = Yup.object().shape({
   address: Yup.string().required('Required'),
-  denom: Yup.string().required('Required'),
 });
 
 const DENUMS_TO_TOKEN = {
@@ -79,12 +78,11 @@ class HomeComponent extends React.Component {
       this.setState({ sending: false });
     }, REQUEST_LIMIT_SECS * 1000);
 
-    axios
-      .post('https://faucet.rizon.world', {
+    axios.post('http://faucet.rizon.world', {
         chain_id: network,
         lcd_url: item.lcd,
         address: values.address,
-        denom: values.denom,
+        denom: DENUMS_TO_TOKEN.uatolo,
         response: this.state.response,
       })
       .then((response) => {
@@ -150,7 +148,6 @@ class HomeComponent extends React.Component {
           <Formik
             initialValues={{
               address: '',
-              denom: '',
             }}
             validationSchema={sendSchema}
             onSubmit={this.handleSubmit}
@@ -166,22 +163,6 @@ class HomeComponent extends React.Component {
                   {errors.address && touched.address ? (
                     <div className="fieldError">{errors.address}</div>
                   ) : null}
-                </div>
-                <div className="select">
-                  <Field component="select" name="denom">
-                    <option value="" default>
-                      Select denom to receive...
-                    </option>
-                    <option value="uatolo">{DENUMS_TO_TOKEN['uatolo']}</option>
-                  </Field>
-                  {errors.denom && touched.denom ? (
-                    <div className="fieldError selectFieldError">
-                      {errors.denom}
-                    </div>
-                  ) : null}
-                  <div className="selectAddon">
-                    <i className="material-icons">arrow_drop_down</i>
-                  </div>
                 </div>
 
                 <div className="buttonContainer">

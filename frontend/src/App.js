@@ -16,7 +16,7 @@ class App extends Component {
         </header>
         <Route exact path="/" component={Home} />
         <footer>
-          &copy; {this.showCurrentYear()} <span>Rizon</span>
+          &copy; {this.showCurrentYear()} <span>RIZON</span>
         </footer>
       </Router>
     );
