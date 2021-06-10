@@ -1,6 +1,6 @@
 import React from 'react';
 // import cx from "classnames";
-// import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
@@ -33,16 +33,24 @@ const REQUEST_LIMIT_SECS = 30;
 
 class HomeComponent extends React.Component {
   static contextType = NetworkContext;
-  //recaptchaRef = React.createRef();
+  recaptchaRef = React.createRef();
 
   constructor(props) {
     super(props);
     this.state = {
       sending: false,
+      captcha: false,
       verified: false,
       response: '',
     };
   }
+  
+  handleCaptcha = (response) => {
+    this.setState({
+      response,
+      captcha: true,
+    });
+  };
 
   enableButton = (value) => {
     this.setState({
@@ -69,10 +77,11 @@ class HomeComponent extends React.Component {
     // same shape as initial values
     this.setState({
       sending: true,
+      captcha: false,
       verified: false,
     });
 
-    //this.recaptchaRef.current.reset();
+    this.recaptchaRef.current.reset();
 
     setTimeout(() => {
       this.setState({ sending: false });
@@ -145,6 +154,13 @@ class HomeComponent extends React.Component {
             latest Rizon testnet. Please don't abuse this service—the number of
             available tokens is limited.
           </article>
+          <div className="recaptcha">
+            <ReCAPTCHA
+              ref={this.recaptchaRef}
+              sitekey=""
+              onChange={this.handleCaptcha}
+            />
+          </div>
           <Formik
             initialValues={{
               address: '',
