@@ -44,12 +44,8 @@
     "ie >= 10",
     "not op_mini all"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "prettier": {
     "singleQuote": true
-  }
+  },
+  "proxy": "http://3.37.20.108:5000"
 }

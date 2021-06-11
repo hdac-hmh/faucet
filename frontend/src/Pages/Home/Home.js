@@ -87,7 +87,7 @@ class HomeComponent extends React.Component {
       this.setState({ sending: false });
     }, REQUEST_LIMIT_SECS * 1000);
 
-    axios.post('http://faucet.rizon.world', {
+    axios.post('/faucets', {
         chain_id: network,
         lcd_url: item.lcd,
         address: values.address,
@@ -95,12 +95,9 @@ class HomeComponent extends React.Component {
         response: this.state.response,
       })
       .then((response) => {
-        const { amount } = response.data;
-
+        const { txHash } = response.data;
         toast.success(
-          `Successfully Sent ${amount / 1000000} ${
-            DENUMS_TO_TOKEN[values.denom]
-          } to ${values.address}`
+          `Successfully Sent to ${values.address}. txHash:${txHash}`
         );
 
         resetForm();
