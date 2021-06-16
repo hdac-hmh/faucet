@@ -2,6 +2,7 @@
   "name": "faucet-app",
   "version": "0.6.0",
   "private": true,
+  "proxy": "http://3.37.20.108:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -46,6 +47,5 @@
   ],
   "prettier": {
     "singleQuote": true
-  },
-  "proxy": "http://3.37.20.108:5000"
+  }
 }

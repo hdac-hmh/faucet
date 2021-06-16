@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import b32 from '../../lib/b32';
-import { networks } from '../../config';
+//import { networks } from '../../config';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -47,7 +47,7 @@ class HomeComponent extends React.Component {
   
   handleCaptcha = (response) => {
     this.setState({
-      response,
+      response: response,
       captcha: true,
     });
   };
@@ -72,8 +72,8 @@ class HomeComponent extends React.Component {
   };
 
   handleSubmit = (values, { resetForm }) => {
-    const network = this.context.network;
-    const item = networks.filter((n) => n.key === network)[0];
+    //const network = this.context.network;
+    //const item = networks.filter((n) => n.key === network)[0];
     // same shape as initial values
     this.setState({
       sending: true,
@@ -88,11 +88,8 @@ class HomeComponent extends React.Component {
     }, REQUEST_LIMIT_SECS * 1000);
 
     axios.post('/faucets', {
-        chain_id: network,
-        lcd_url: item.lcd,
         address: values.address,
-        denom: DENUMS_TO_TOKEN.uatolo,
-        response: this.state.response,
+        captchaResponse: this.state.response,
       })
       .then((response) => {
         const { txHash } = response.data;
@@ -133,7 +130,7 @@ class HomeComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="main">
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -145,16 +142,18 @@ class HomeComponent extends React.Component {
           pauseOnHover
         />
         <section>
+          <div className="logo"></div>
           <h2>Rizon Testnet Faucet</h2>
           <article>
             Hello intrepid spaceperson! Use this faucet to get tokens for the
             latest Rizon testnet. Please don't abuse this service—the number of
             available tokens is limited.
           </article>
-          <div className="recaptcha">
+          <div className="recaptcha" >
             <ReCAPTCHA
               ref={this.recaptchaRef}
-              sitekey=""
+              theme="dark"
+              sitekey="6LfbIyQbAAAAADuQNUImrKD-cRY6GxiBfce4ncBt"
               onChange={this.handleCaptcha}
             />
           </div>
@@ -180,7 +179,7 @@ class HomeComponent extends React.Component {
 
                 <div className="buttonContainer">
                   <button
-                    disabled={!this.state.verified || this.state.sending}
+                    disabled={!this.state.verified || this.state.sending || !this.state.captcha }
                     type="submit"
                   >
                     <i aria-hidden="true" className="material-icons">
