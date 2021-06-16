@@ -25,10 +25,10 @@
   font-feature-settings: 'liga';
 }
 
-.bg-contents {
+.background {
   position: absolute;
   width: 100%;
-  height: 1284px;
+  height: 100%;
   left: 0px;
   top: -543px;
 
@@ -36,42 +36,18 @@
   z-index: -1;
 }
 
-.bg-contents-light {
+.bg-contents {
   position: absolute;
-  width: 291px;
-  height: 417px;
-  left: 42%;
-  top: 543px;
-  background: url(./assets/faucetimg-1.svg) no-repeat;
-  z-index: -1;
-}
-
-.bg-contents-coin1 {
-  position: absolute;
-  width: 279.9px;
-  height: 285px;
-  left: 15%;
-  top: 60%;
-  background: url(./assets/faucetimg-2.svg) no-repeat;
-  z-index: -1;
-}
-
-.bg-contents-coin2 {
-  position: absolute;
-  width: 358.01px;
-  height: 345.8px;
-  left: 69%;
-  top: 80%;
-  background: url(./assets/faucetimg-3.svg) no-repeat;
+  width: 1330px;
+  height: 999px;
+  left:295px;
+  top: 0.4px;
+  background: url(./assets/faucetimg.svg) no-repeat;
   z-index: -1;
 }
 
 #main {
-  margin: 8% auto;
-}
-
-html {
-  width: 100%;
+  margin: 9% auto;
 }
 
 header {
@@ -103,9 +79,10 @@ footer {
   font-style: normal;
   font-weight: normal;
   font-size: 15px;
-  line-height: 22px;
+  line-height: 40px;
   text-align: center;
   color: #A9ACB1;
+  vertical-align: bottom;
   span {
     font-weight: 700;
   }
@@ -113,8 +90,8 @@ footer {
 
 body {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 1920px;
+  height: 1080px;
 
   background: linear-gradient(180deg, #131313 0%, #000000 100%);
 }
@@ -124,7 +101,6 @@ section {
   flex-direction:column;
   align-items: center;
   width: 100%;
-  max-width: 640px;
   margin: 10px auto;
   padding: 30px 10px;
   box-sizing: border-box;
@@ -132,13 +108,14 @@ section {
     position: relative;
     width: 100px;
     height: 53.63px;
+    top:3.18px;
     background: url(./assets/rizon_symbol.png);
   }
   h2 {
     padding: 0;
     margin: 5px;
     width: 635px;
-    height: auto;
+    height: 68px;
     font-family: Poppins;
     font-style: normal;
     font-weight: bold;
@@ -371,3 +348,5 @@ section {
     }
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");

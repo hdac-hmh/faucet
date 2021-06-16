@@ -10,11 +10,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="bg-contents">
-          <div className="bg-contents-light"/>
-          <div className="bg-contents-coin1"/>
-          <div className="bg-contents-coin2"/>
-        </div>
+        <div className="background"/>
+        <div className="bg-contents"/>
         <Route exact path="/" component={Home} />
         <footer>
           &copy; {this.showCurrentYear()} <span>RIZON</span>
