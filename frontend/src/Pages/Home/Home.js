@@ -87,7 +87,7 @@ class HomeComponent extends React.Component {
       this.setState({ sending: false });
     }, REQUEST_LIMIT_SECS * 1000);
 
-    axios.post('/faucets', {
+    axios.post('http://3.37.20.108:5000/faucets', {
         address: values.address,
         captchaResponse: this.state.response,
       })
