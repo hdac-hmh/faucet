@@ -1,18 +1,17 @@
 import React from 'react';
-// import cx from "classnames";
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import b32 from '../../lib/b32';
-//import { networks } from '../../config';
 
 import 'react-toastify/dist/ReactToastify.css';
 
 import '../../App.scss';
 import NetworkContext from '../../contexts/NetworkContext';
 import logoImage from '../../assets/rizon_symbol.svg';
+import arrowImage from '../../assets/arrow.svg';
 
 const bech32Validate = (param) => {
   try {
@@ -184,11 +183,13 @@ class HomeComponent extends React.Component {
                   <button
                     disabled={!this.state.verified || this.state.sending || !this.state.captcha }
                     type="submit">
-                    <span>
-                      {this.state.sending
-                        ? 'Waiting for next tap'
-                        : 'Send me tokens ->'}
-                    </span>
+                    {this.state.sending
+                      ? <span>Waiting for next tap</span>
+                      : <span>Send me tokens</span>}
+                    {this.state.sending
+                      ? null
+                      : <img className="arrowImg" src={arrowImage}/>
+                    }
                   </button>
                 </div>
               </Form>
