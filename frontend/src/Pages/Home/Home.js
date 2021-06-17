@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import '../../App.scss';
 import NetworkContext from '../../contexts/NetworkContext';
+import logoImage from '../../assets/rizon_symbol.svg';
 
 const bech32Validate = (param) => {
   try {
@@ -130,7 +131,7 @@ class HomeComponent extends React.Component {
 
   render() {
     return (
-      <div id="main">
+      <div className="contents">
         <ToastContainer
           position="top-right"
           autoClose={5000}
@@ -142,13 +143,17 @@ class HomeComponent extends React.Component {
           pauseOnHover
         />
         <section>
-          <div className="logo"></div>
-          <h2>Rizon Testnet Faucet</h2>
-          <article>
+          <img className="contentsLogo" src={logoImage}/>
+          <br/>
+          <span className="contentsText2">Rizon Testnet Faucet</span>
+          <br/>
+          <span className="contentsText3">
             Hello intrepid spaceperson! Use this faucet to get tokens for the
-            latest Rizon testnet. Please don't abuse this service—the number of
+            latest Rizon testnet. 
+            <br/>
+            Please don't abuse this service—the number of
             available tokens is limited.
-          </article>
+          </span>
           <div className="recaptcha" >
             <ReCAPTCHA
               ref={this.recaptchaRef}
@@ -162,16 +167,14 @@ class HomeComponent extends React.Component {
               address: '',
             }}
             validationSchema={sendSchema}
-            onSubmit={this.handleSubmit}
-          >
+            onSubmit={this.handleSubmit}>
             {({ errors, touched }) => (
               <Form className="inputContainer">
                 <div className="input">
                   <Field
                     name="address"
-                    placeholder="Testnet address"
-                    validate={this.validateAddress}
-                  />
+                    placeholder="RIZON Testnet address"
+                    validate={this.validateAddress}/>
                   {errors.address && touched.address ? (
                     <div className="fieldError">{errors.address}</div>
                   ) : null}
@@ -180,15 +183,11 @@ class HomeComponent extends React.Component {
                 <div className="buttonContainer">
                   <button
                     disabled={!this.state.verified || this.state.sending || !this.state.captcha }
-                    type="submit"
-                  >
-                    <i aria-hidden="true" className="material-icons">
-                      send
-                    </i>
+                    type="submit">
                     <span>
                       {this.state.sending
                         ? 'Waiting for next tap'
-                        : 'Send me tokens'}
+                        : 'Send me tokens ->'}
                     </span>
                   </button>
                 </div>

@@ -1,80 +1,53 @@
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 16px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  vertical-align: middle;
-  margin-top: -2px;
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+/*------------------- Layout -------------------*/
+.fullWarpper {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	border: solid 0px;
+	width: 1000px;
+	height: 100%;
+	margin-left: -500px;
+	margin-top: 0px;
+	z-index: 1;
+	/*background-color: darkblue;*/
+	pointer-events: none;
 }
 
-.background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: -543px;
-
-  background: radial-gradient(50% 50% at 50% 50%, rgba(4, 190, 254, 0.25) 0%, rgba(196, 196, 196, 0) 100%);
-  z-index: -1;
-}
-
-.bg-contents {
-  position: absolute;
-  width: 1330px;
-  height: 999px;
-  left:295px;
-  top: 0.4px;
-  background: url(./assets/faucetimg.svg) no-repeat;
-  z-index: -1;
-}
-
-#main {
-  margin: 9% auto;
-}
-
-header {
-  background: #291D51 url(./assets/rizon_faucet.svg) top 5px left 20px
-    no-repeat;
-  background-size: 120px auto;
-  text-align: right;
-  color: #fff;
-  font-weight: 300;
-  height: 50px;
-  line-height: 50px;
-  padding: 0 20px;
-  font-size: 14px;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  span {
-    font-weight: 500;
-    color: #fff;
+@media (min-width:1px) and (max-width:999px) {
+  .fullWarpper {
+    width: 90%;
+    margin-left: -47.5vw;
   }
 }
 
+/*------------------- Body -------------------*/
+
+.background {
+  width: 100%;
+  z-index: -1;
+  //margin: auto 20px;
+}
+
+.contents {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: 15vw;
+  z-index:200;
+}
+
+input:-internal-autofill-selected
+{
+  background-color: rgb(0, 255, 255) !important;
+  background-image: none !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+
 footer {
-  padding: 40px 40px 30px;
+  padding: 140px 40px 30px;
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
@@ -88,14 +61,6 @@ footer {
   }
 }
 
-body {
-  position: relative;
-  width: 1920px;
-  height: 1080px;
-
-  background: linear-gradient(180deg, #131313 0%, #000000 100%);
-}
-
 section {
   display: flex;
   flex-direction:column;
@@ -104,28 +69,47 @@ section {
   margin: 10px auto;
   padding: 30px 10px;
   box-sizing: border-box;
-  .logo {
-    position: relative;
-    width: 100px;
-    height: 53.63px;
-    top:3.18px;
-    background: url(./assets/rizon_symbol.png);
+
+  .contentsLogo {
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    max-height: 53.63px;
   }
-  h2 {
-    padding: 0;
-    margin: 5px;
-    width: 635px;
-    height: 68px;
+  
+  .contentsText2 {
+    flex-grow: 0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to bottom,  #ffffff, #C1FFDB);
     font-family: Poppins;
-    font-style: normal;
-    font-weight: bold;
+    /*font-size: 128px;*/
     font-size: 60px;
-    line-height: 68px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.02;
+    letter-spacing: -2px;
     text-align: center;
-    background: -webkit-linear-gradient( #ffffff, #C1FFDB);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  
+  .contentsText3 {
+    padding: 10px;
+    flex-grow: 0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.78;
+    letter-spacing: normal;
+    text-align: center;
+    color: #A9ACB1;
+  }
+
   article {
     width: 747px;
     height: 54px;
@@ -135,11 +119,10 @@ section {
     font-size: 18px;
     line-height: 27px;
     text-align: center;
-    color: #A9ACB1
-    ;
+    color: #A9ACB1;
   }
   .recaptcha {
-    margin: 30px 0 20px;
+    margin: 20px 0 20px;
   }
   .inputContainer {
     ::placeholder {
@@ -156,27 +139,36 @@ section {
       color: rgba(113, 115, 118, 1) !important;
     }
     .fieldError {
-      color: #ff5561;
-      padding: 5px 3px 0;
+      padding: 5px 5px 0;
+      font-family: Poppins;
       font-size: 13px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ff5561;
     }
     .input {
       position: relative;
       margin: 20px 0;
       width: 640px;
-      height: 10px;
+      height: 50px;
+      
       input {
         color: #717376;
         appearance: none;
         border: solid 1px #717376;
+        box-sizing: border-box;
         border-radius: 10px;
+        width: 100%;
         height: 48px;
         padding: 0 10px;
-        width: 100%;
-        box-sizing: border-box;
+        
+        font-family: Poppins;
         font-size: 18px;
         background-color: rgba(19, 19, 19, 1);
-        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        // -webkit-tap-highlight-color: rgba(255, 255, 255, 1);
         &:disabled,
         &:read-only {
           background: rgba(14, 60, 165, 0.03);
@@ -235,7 +227,7 @@ section {
     }
   }
   .buttonContainer {
-    padding: 20px 0 10px;
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -243,16 +235,22 @@ section {
       appearance: none;
       width: 240px;
       height: 70px;
-      margin: 13px auto;
-      padding: 0 40px 0 35px;
-      line-height: 48px;
+      margin: 20px auto;
+      padding: 20px 30px;
       background: #717376;
-      color: #000;
       border: 0;
       border-radius: 25px;
       box-shadow: 0 1px 1px 0 rgba(14, 60, 165, 0.1);
-      font-size: 16px;
       cursor: pointer;
+      font-family: Poppins;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 22px;
+      letter-spacing: normal;
+      text-align: center;
+      color: #000;
       &:first-of-type {
         margin-bottom: 12px;
       }
@@ -269,23 +267,20 @@ section {
     button[disabled] {
       background: rgba(113, 115, 118, 1);
     }
-    i {
-      margin-right: 10px;
-    }
   }
 }
 
-.network_select {
-  position: absolute;
-  margin-top: 6px;
-  right: 20px;
-  height: 36px;
+// .network_select {
+//   position: absolute;
+//   margin-top: 6px;
+//   right: 20px;
+//   height: 36px;
 
-  @media (max-width: 768px) {
-    height: 28px !important;
-    margin-top: 10px;
-  }
-}
+//   @media (max-width: 768px) {
+//     height: 28px !important;
+//     margin-top: 10px;
+//   }
+// }
 
 .Toastify__toast-container--top-right {
   top: 15px !important;
@@ -316,37 +311,35 @@ section {
   background: #ff5561 !important;
 }
 
-@media screen and (min-width: 360px) {
-  section {
-    border-radius: 5px;
-    padding: 30px 20px;
-  }
-}
+// @media screen and (min-width: 360px) {
+//   section {
+//     border-radius: 5px;
+//     padding: 30px 20px;
+//   }
+// }
 
-@media screen and (min-width: 375px) {
-  section {
-    border-radius: 5px;
-    padding: 30px 25px;
-  }
-}
+// @media screen and (min-width: 375px) {
+//   section {
+//     border-radius: 5px;
+//     padding: 30px 25px;
+//   }
+// }
 
-@media screen and (min-width: 400px) {
-  section {
-    border-radius: 5px;
-    padding: 30px 30px;
-  }
-}
+// @media screen and (min-width: 400px) {
+//   section {
+//     border-radius: 5px;
+//     padding: 30px 30px;
+//   }
+// }
 
-@media screen and (min-width: 680px) {
-  section {
-    margin: 20px auto;
-    padding: 40px 40px;
-    .buttonContainer {
-      button {
-        width: auto;
-      }
-    }
-  }
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap");
+// @media screen and (min-width: 680px) {
+//   section {
+//     margin: 20px auto;
+//     padding: 40px 40px;
+//     .buttonContainer {
+//       button {
+//         width: auto;
+//       }
+//     }
+//   }
+// }
