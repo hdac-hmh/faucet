@@ -38,13 +38,6 @@
   z-index:200;
 }
 
-input:-internal-autofill-selected
-{
-  background-color: rgb(0, 255, 255) !important;
-  background-image: none !important;
-  color: rgb(0, 0, 0) !important;
-}
-
 footer {
   margin: 20px auto;
   padding: 20px 20px 30px;
@@ -100,7 +93,7 @@ section {
     flex-grow: 0;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     font-family: Poppins;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -278,18 +271,6 @@ section {
     vertical-align: text-bottom;
   }
 }
-
-// .network_select {
-//   position: absolute;
-//   margin-top: 6px;
-//   right: 20px;
-//   height: 36px;
-
-//   @media (max-width: 768px) {
-//     height: 28px !important;
-//     margin-top: 10px;
-//   }
-// }
 
 .Toastify__toast-container--top-right {
   top: 15px !important;
