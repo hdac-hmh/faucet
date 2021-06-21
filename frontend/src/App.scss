@@ -164,60 +164,60 @@ section {
         background-color: rgba(19, 19, 19, 0);
         &:disabled,
         &:read-only {
-          background: rgba(14, 60, 165, 0.03);
+          
         }
         &:focus {
-          border: solid 1px #859dca;
+          outline: none;
         }
       }
     }
-    .select {
-      position: relative;
-      margin: 20px 0;
-      &:last-child {
-        margin-bottom: 0;
-      }
-      select {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        border-radius: 5px;
-        background: #fff;
-        width: 100%;
-        color: #2043b5;
-        padding: 0 10px;
-        height: 48px;
-        font-size: 16px;
-        border: solid 1px #ced8ea;
-        box-sizing: border-box;
-        outline: 0;
-        &:focus {
-          border: solid 1px #859dca;
-        }
-        option {
-          background-color: inherit;
-          font-family: inherit;
-          color: inherit;
-        }
-      }
-      .selectAddon {
-        position: absolute;
-        top: 1px;
-        right: 1px;
-        bottom: 1px;
-        text-align: center;
-        box-sizing: border-box;
-        border-left: solid 1px #ced8ea;
-        text-align: center;
-        pointer-events: none;
-        line-height: 48px;
-        height: 48px;
-        width: 48px;
-        i {
-          font-size: 18px;
-        }
-      }
-    }
+    // .select {
+    //   position: relative;
+    //   margin: 20px 0;
+    //   &:last-child {
+    //     margin-bottom: 0;
+    //   }
+    //   select {
+    //     -webkit-appearance: none;
+    //     -moz-appearance: none;
+    //     appearance: none;
+    //     border-radius: 5px;
+    //     background: #fff;
+    //     width: 100%;
+    //     color: #2043b5;
+    //     padding: 0 10px;
+    //     height: 48px;
+    //     font-size: 16px;
+    //     border: solid 1px #ced8ea;
+    //     box-sizing: border-box;
+    //     outline: 0;
+    //     &:focus {
+    //       border: solid 1px #859dca;
+    //     }
+    //     option {
+    //       background-color: inherit;
+    //       font-family: inherit;
+    //       color: inherit;
+    //     }
+    //   }
+    //   .selectAddon {
+    //     position: absolute;
+    //     top: 1px;
+    //     right: 1px;
+    //     bottom: 1px;
+    //     text-align: center;
+    //     box-sizing: border-box;
+    //     border-left: solid 1px #ced8ea;
+    //     text-align: center;
+    //     pointer-events: none;
+    //     line-height: 48px;
+    //     height: 48px;
+    //     width: 48px;
+    //     i {
+    //       font-size: 18px;
+    //     }
+    //   }
+    // }
   }
   .buttonContainer {
     padding: 0 10px;
