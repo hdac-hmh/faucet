@@ -12,6 +12,8 @@ import '../../App.scss';
 import NetworkContext from '../../contexts/NetworkContext';
 import logoImage from '../../assets/rizon_symbol.svg';
 import arrowImage from '../../assets/arrow.svg';
+import successIcon from '../../assets/success_icon.svg';
+import failIcon from '../../assets/fail_icon.svg';
 
 const bech32Validate = (param) => {
   try {
@@ -94,7 +96,7 @@ class HomeComponent extends React.Component {
       .then((response) => {
         const { txHash } = response.data;
         toast.success(
-          `Successfully Sent to ${values.address}. txHash:${txHash}`
+          `${successIcon} Faucet Success`
         );
 
         resetForm();
@@ -124,7 +126,8 @@ class HomeComponent extends React.Component {
               break;
           }
         }
-        toast.error(`An error occurred: ${errText}`);
+        errText = 'Faucet Fail';
+        toast.error(`${errText}`);
       });
   };
 
@@ -133,7 +136,7 @@ class HomeComponent extends React.Component {
       <div className="contents">
         <ToastContainer
           position="top-right"
-          autoClose={5000}
+          autoClose={false}
           hideProgressBar
           newestOnTop
           closeOnClick
@@ -145,14 +148,6 @@ class HomeComponent extends React.Component {
           <img className="contentsLogo" src={logoImage}/>
           <br/>
           <span className="contentsText2">Rizon Testnet Faucet</span>
-          <br/>
-          <span className="contentsText3">
-            Hello intrepid spaceperson! Use this faucet to get tokens for the
-            latest Rizon testnet. 
-            <br/>
-            Please don't abuse this service—the number of
-            available tokens is limited.
-          </span>
           <div className="recaptcha" >
             <ReCAPTCHA
               ref={this.recaptchaRef}
