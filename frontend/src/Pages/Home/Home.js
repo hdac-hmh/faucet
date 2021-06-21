@@ -136,7 +136,7 @@ class HomeComponent extends React.Component {
       <div className="contents">
         <ToastContainer
           position="top-right"
-          autoClose={false}
+          autoClose={3000}
           hideProgressBar
           newestOnTop
           closeOnClick
