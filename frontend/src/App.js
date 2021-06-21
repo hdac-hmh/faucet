@@ -14,8 +14,8 @@ class App extends Component {
         <div className="fullWrapper">
           <img className="background" src={bgImage}/>
           <Route exact path="/" component={Home} />
+          <footer>&copy; {this.showCurrentYear()} <span>RIZON</span> </footer>
         </div>
-        <footer>&copy; {this.showCurrentYear()} <span>RIZON</span> </footer>
       </Router>
     );
   }
