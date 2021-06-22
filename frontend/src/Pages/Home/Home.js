@@ -96,7 +96,7 @@ class HomeComponent extends React.Component {
       .then((response) => {
         const { txHash } = response.data;
         toast.success(
-          `${successIcon} Faucet Success`
+          `Faucet Success`
         );
 
         resetForm();
