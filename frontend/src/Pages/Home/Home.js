@@ -1,7 +1,7 @@
 import React from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, Zoom } from 'react-toastify';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import b32 from '../../lib/b32';
@@ -12,8 +12,8 @@ import '../../App.scss';
 import NetworkContext from '../../contexts/NetworkContext';
 import logoImage from '../../assets/rizon_symbol.svg';
 import arrowImage from '../../assets/arrow.svg';
-import successIcon from '../../assets/success_icon.svg';
-import failIcon from '../../assets/fail_icon.svg';
+// import successIcon from '../../assets/success_icon.svg';
+// import failIcon from '../../assets/fail_icon.svg';
 
 const bech32Validate = (param) => {
   try {
@@ -27,9 +27,9 @@ const sendSchema = Yup.object().shape({
   address: Yup.string().required('Required'),
 });
 
-const DENUMS_TO_TOKEN = {
-  uatolo: 'Atolo',
-};
+// const DENUMS_TO_TOKEN = {
+//   uatolo: 'Atolo',
+// };
 
 const REQUEST_LIMIT_SECS = 30;
 
@@ -94,9 +94,11 @@ class HomeComponent extends React.Component {
         captchaResponse: this.state.response,
       })
       .then((response) => {
-        const { txHash } = response.data;
+        //const { txHash } = response.data;
+        console.log(`tx Hash : ${response.data}`)
         toast.success(
-          `Faucet Success`
+          `Faucet Success`,
+          { transition: Zoom }
         );
 
         resetForm();
@@ -127,7 +129,7 @@ class HomeComponent extends React.Component {
           }
         }
         errText = 'Faucet Fail';
-        toast.error(`${errText}`);
+        toast.error(`${errText}`, { transition: Zoom });
       });
   };
 
@@ -137,15 +139,16 @@ class HomeComponent extends React.Component {
         <ToastContainer
           position="top-right"
           autoClose={3000}
-          hideProgressBar
+          hideProgressBar={false}
           newestOnTop
           closeOnClick
           rtl={false}
           pauseOnVisibilityChange
           pauseOnHover
+          Transition={Zoom}
         />
         <section>
-          <img className="contentsLogo" src={logoImage}/>
+          <img className="contentsLogo" src={logoImage} alt="rizon logo"/>
           <br/>
           <span className="contentsText2">Rizon Testnet Faucet</span>
           <div className="recaptcha" >
@@ -183,7 +186,7 @@ class HomeComponent extends React.Component {
                       : <span>Send me tokens</span>}
                     {this.state.sending
                       ? null
-                      : <img className="arrowImg" src={arrowImage}/>
+                      : <img className="arrowImg" src={arrowImage} alt="arrow resource"/>
                     }
                   </button>
                 </div>

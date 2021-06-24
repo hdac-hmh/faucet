@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <Router>
         <div className="fullWrapper">
-          <img className="background" src={bgImage}/>
+          <img className="background" src={bgImage} alt="background reousrce"/>
           <Route exact path="/" component={Home} />
           <footer>&copy; {this.showCurrentYear()} <span>RIZON</span> </footer>
         </div>
