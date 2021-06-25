@@ -1,6 +1,6 @@
 {
   "name": "faucet-app",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "export PORT=80 && react-scripts start",
